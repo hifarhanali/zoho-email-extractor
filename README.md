@@ -45,11 +45,11 @@ I was provided with eml files of inbox emails. Instead of manually extracting th
 
 4. Run the main.py file by running the following command:
     ```
-    python src/main.py -i path/to/eml_files -o path/to/output_dir -output_file_name name_of_output_file --restricted_emails_path path/to/restricted_emails.csv
+    python src/main.py -i path/to/eml_files -o path/to/output_dir --output_filename name_of_output_file --restricted_emails_path path/to/restricted_emails.csv
     ```
     e.g.
     ```
-    python src/main.py -i ./inputs/emails -o ./outputs/ -output_file_name emails.csv --restricted_emails_path ./inputs/restricted_emails.csv
+    python src/main.py -i ./inputs/emails -o ./outputs/ --output_filename emails.csv --restricted_emails_path ./inputs/restricted_emails.csv
     ```
 
 
