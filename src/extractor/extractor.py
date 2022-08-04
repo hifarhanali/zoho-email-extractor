@@ -17,8 +17,11 @@ class EmailExtractor:
     @staticmethod
     def __extract__(filename: str):
         msg = EmailExtractor.__read_file_data__(filename)
-        sender_info = msg["from"]
-        sender_email = sender_info.split(" ")[-1].replace("<", "").replace(">", "")
+        sender_info = msg["from"] or msg["From"]
+        if sender_info is None:
+            sender_email = None
+        else:
+            sender_email = sender_info.split(" ")[-1].replace("<", "").replace(">", "")
         return sender_email
 
 
@@ -45,7 +48,7 @@ class EmailExtractor:
         for filename in filenames:
             file_path = os.path.join(input_directory, filename)
             sender_email = EmailExtractor.__extract__(file_path)
-            if sender_email not in restricted_emails:
+            if sender_email and sender_email not in restricted_emails:
                 emails.add(sender_email)
 
         # Write to csv
